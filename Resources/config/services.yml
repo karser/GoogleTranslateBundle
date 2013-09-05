@@ -1,0 +1,7 @@
+parameters:
+    karser.google_translate.manager.class: Karser\GoogleTranslateBundle\Manager\TranslateManager
+
+services:
+    karser.google_translate.manager:
+        class: %karser.google_translate.manager.class%
+        arguments: [ @doctrine.orm.entity_manager, %karser_google_translate.api_key% ]

@@ -1,0 +1,49 @@
+<?php
+namespace Karser\GoogleTranslateBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table
+ */
+class Translation {
+
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\Column(type="bigint")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     *
+     * @var string
+     */
+    protected $source;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     *
+     * @var string
+     */
+    protected $target;
+
+    /**
+     * @ORM\Column(type="string", length=1000)
+     *
+     * @var string
+     */
+    protected $original;
+
+    /**
+     * @ORM\Column(type="string", length=1000)
+     *
+     * @var string
+     */
+    protected $translated;
+
+} 
