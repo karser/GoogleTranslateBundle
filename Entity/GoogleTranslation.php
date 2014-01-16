@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table
  */
-class Translation
+class GoogleTranslation
 {
 
     /**
@@ -62,7 +62,7 @@ class Translation
      * Set source
      *
      * @param string $source
-     * @return Translation
+     * @return GoogleTranslation
      */
     public function setSource($source)
     {
@@ -85,7 +85,7 @@ class Translation
      * Set target
      *
      * @param string $target
-     * @return Translation
+     * @return GoogleTranslation
      */
     public function setTarget($target)
     {
@@ -108,7 +108,7 @@ class Translation
      * Set original
      *
      * @param string $original
-     * @return Translation
+     * @return GoogleTranslation
      */
     public function setOriginal($original)
     {
@@ -131,7 +131,7 @@ class Translation
      * Set translated
      *
      * @param string $translated
-     * @return Translation
+     * @return GoogleTranslation
      */
     public function setTranslated($translated)
     {

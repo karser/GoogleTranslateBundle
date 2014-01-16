@@ -2,8 +2,7 @@
 namespace Karser\GoogleTranslateBundle\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Karser\GoogleTranslateBundle\Entity\Translation;
-use Doctrine\Orm\EntityManager;
+use Karser\GoogleTranslateBundle\Entity\GoogleTranslation;
 use Karser\GoogleTranslateBundle\Exception\GoogleTranslateException;
 
 class TranslateManager
@@ -31,7 +30,7 @@ class TranslateManager
      */
     public function translate($data, $target, $source = '')
     {
-        $rep = $this->em->getRepository('KarserGoogleTranslateBundle:Translation');
+        $rep = $this->em->getRepository('KarserGoogleTranslateBundle:GoogleTranslation');
         $translation = $rep->findOneBy([
             'source' => $source,
             'target' => $target,
@@ -43,7 +42,7 @@ class TranslateManager
             } catch (\Exception $e) {
                 throw new GoogleTranslateException($e->getMessage());
             }
-            $translation = new Translation();
+            $translation = new GoogleTranslation();
             $translation->setSource($source);
             $translation->setTarget($target);
             $translation->setOriginal($data);
