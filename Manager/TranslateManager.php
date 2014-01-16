@@ -4,6 +4,7 @@ namespace Karser\GoogleTranslateBundle\Manager;
 use Doctrine\Common\Persistence\ObjectManager;
 use Karser\GoogleTranslateBundle\Entity\Translation;
 use Doctrine\Orm\EntityManager;
+use Karser\GoogleTranslateBundle\Exception\GoogleTranslateException;
 
 class TranslateManager
 {
@@ -21,6 +22,13 @@ class TranslateManager
         $this->api_key = $api_key;
     }
 
+    /**
+     * @param string $data
+     * @param string $target
+     * @param string $source
+     * @return string
+     * @throws GoogleTranslateException
+     */
     public function translate($data, $target, $source = '')
     {
         $rep = $this->em->getRepository('KarserGoogleTranslateBundle:Translation');
@@ -33,7 +41,7 @@ class TranslateManager
             try {
                 $translated = $this->query($data, $target, $source);
             } catch (\Exception $e) {
-                $translated = $e->getMessage();
+                throw new GoogleTranslateException($e->getMessage());
             }
             $translation = new Translation();
             $translation->setSource($source);
